@@ -38,7 +38,8 @@
         <service android:name="com.exinnos.stockhawk.service.StockIntentService" />
         <provider
             android:authorities="com.exinnos.stockhawk.data.QuoteProvider"
-            android:name="com.sam_chordas.android.stockhawk.data.generated.QuoteProvider"
+            android:name="com.exinnos.stockhawk.data.generated.QuoteProvider"
+            android:enabled="true"
             android:exported="false"/>
     </application>
 

@@ -18,6 +18,12 @@ android {
       proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
     }
   }
+
+    apt {
+        arguments {
+            schematicOutPackage 'com.exinnos.stockhawk.data.provider.QuoteProvider'
+        }
+    }
 }
 
 repositories {
@@ -35,4 +41,5 @@ dependencies {
   compile('com.github.afollestad.material-dialogs:core:0.8.5.7@aar') {
     transitive = true
   }
+
 }
