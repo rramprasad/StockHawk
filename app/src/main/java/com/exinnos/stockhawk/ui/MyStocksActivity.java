@@ -88,8 +88,7 @@ public class MyStocksActivity extends AppCompatActivity implements LoaderManager
     recyclerView.addOnItemTouchListener(new RecyclerViewItemClickListener(this,
             new RecyclerViewItemClickListener.OnItemClickListener() {
               @Override public void onItemClick(View v, int position) {
-                //TODO:
-                // do something on item click
+                launchStockDetailsActivity();
               }
             }));
     recyclerView.setAdapter(mCursorAdapter);
@@ -157,6 +156,14 @@ public class MyStocksActivity extends AppCompatActivity implements LoaderManager
       // are updated.
       GcmNetworkManager.getInstance(this).schedule(periodicTask);
     }
+  }
+
+  /**
+   * Launch Stock details activity to track stock over time.
+   */
+  private void launchStockDetailsActivity() {
+    Intent intent = new Intent(MyStocksActivity.this, StockDetailsActivity.class);
+    startActivity(intent);
   }
 
 

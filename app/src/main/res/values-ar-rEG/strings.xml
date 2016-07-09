@@ -1,0 +1,26 @@
+<resources>
+
+  <!-- Stock Hawk -->
+  <string name="app_name">الأسهم هوك</string>
+
+  <!-- Settings -->
+  <string name="action_settings">إعدادات</string>
+
+  <!-- Change Units -->
+  <string name="action_change_units">وحدات التغيير</string>
+
+  <!-- Symbol Search -->
+  <string name="symbol_search">رمز البحث</string>
+
+  <!--Search for a Stock Symbol-->
+  <string name="content_test">بحث عن الأوراق المالية رمز</string>
+
+  <!--Uh-oh! This app requires an internet connection-->
+  <string name="network_toast">اه اوه! هذا التطبيق يتطلب اتصال بالإنترنت</string>
+
+  <!--Stock data not available.Please check your internet connection!-->
+  <string name="no_network_available">بيانات المخزون لا المتاحة. يرجى التحقق من الاتصال بالإنترنت لديك!</string>
+
+  <!--Add Stock-->
+  <string name="talk_back_add_stock">إضافة أسهم</string>
+</resources>
