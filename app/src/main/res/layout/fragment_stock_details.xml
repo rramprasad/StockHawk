@@ -5,13 +5,26 @@
     android:layout_height="match_parent"
     tools:context="com.exinnos.stockhawk.ui.StockDetailsFragment">
 
-    <com.db.chart.view.LineChartView
-        android:id="@+id/stock_line_chart"
+
+    <RelativeLayout
+        android:id="@+id/chart_view_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@android:color/holo_red_dark"
-        app:layout_heightPercent="50%"
-        />
+        android:layout_height="wrap_content">
+
+        <include
+            android:id="@+id/chart_toolbar"
+            layout="@layout/chart_toolbar" />
+
+        <com.db.chart.view.LineChartView
+            android:id="@+id/stock_line_chart"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_heightPercent="50%"
+            android:layout_below="@id/chart_toolbar"
+            />
+    </RelativeLayout>
+
+
 
     <RelativeLayout
         android:id="@+id/stock_details_layout"
@@ -19,7 +32,7 @@
         android:layout_height="match_parent"
         app:layout_heightPercent="50%"
         android:background="@android:color/holo_green_dark"
-        android:layout_below="@id/stock_line_chart">
+        android:layout_below="@id/chart_view_layout">
 
 
     </RelativeLayout>

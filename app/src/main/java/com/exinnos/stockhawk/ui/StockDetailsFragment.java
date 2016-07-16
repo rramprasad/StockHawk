@@ -1,18 +1,22 @@
 package com.exinnos.stockhawk.ui;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
+import android.widget.RelativeLayout;
 
 import com.db.chart.model.LineSet;
 import com.db.chart.view.LineChartView;
 import com.exinnos.stockhawk.R;
 
 /**
+ *
  * Stock Details Fragment to display stock price over time.
  * Activities that contain this fragment must implement the
  * {@link StockDetailsFragment.OnStockDetailsFragmentListener} interface
@@ -28,6 +32,11 @@ public class StockDetailsFragment extends Fragment {
 
     private OnStockDetailsFragmentListener mListener;
     private View rootView;
+    private ImageButton playButton;
+    private ImageButton refreshButton;
+    private String[] mLabels = {"06/7","07/7","08/7","09/7","10/7","11/7","12/7","13/7","14/7","15/7"};
+    private float[] mValues = {37.25f,98.50f,717.31f,53.41f,37.25f,98.50f,717.31f,53.41f,717.31f,53.41f};
+    private LineChartView lineChartView;
 
     public StockDetailsFragment() {
         // Required empty public constructor
@@ -65,16 +74,44 @@ public class StockDetailsFragment extends Fragment {
         // Inflate the layout for this fragment
         rootView = inflater.inflate(R.layout.fragment_stock_details, container, false);
 
-        /*LineChartView lineChartView = (LineChartView) rootView.findViewById(R.id.stock_line_chart);
+        RelativeLayout chartToolbar = (RelativeLayout)rootView.findViewById(R.id.chart_toolbar);
 
-        String[] strings = {"A","B","C","D","E"};
-        float[] floats = {1.0f,2.3f,3.0f,4.3f,5.0f};
+        playButton = (ImageButton)chartToolbar.findViewById(R.id.play_button);
+        refreshButton = (ImageButton)chartToolbar.findViewById(R.id.refresh_button);
 
-        LineSet lineSet = new LineSet(strings, floats);*/
+        playButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                 //showChart();
+            }
+        });
+
+        lineChartView = (LineChartView) rootView.findViewById(R.id.stock_line_chart);
 
 
+        showChart();
 
         return rootView;
+    }
+
+    private void showChart() {
+
+        LineSet lineSet = new LineSet(mLabels, mValues);
+        lineSet.setColor(Color.parseColor("#b3b5bb"))
+                .setFill(Color.parseColor("#2d374c"))
+                .setDotsColor(Color.parseColor("#ffc755"))
+                .setThickness(4)
+                .endAt(4);
+
+        lineChartView.addData(lineSet);
+
+        lineChartView.show();
+
+    }
+
+    private void disableChartToolbar() {
+        playButton.setEnabled(false);
+        refreshButton.setEnabled(false);
     }
 
     @Override
